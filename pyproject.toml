@@ -1,0 +1,21 @@
+[project]
+name = "kaggle-cmi"
+version = "0.1.0"
+description = "Kaggle competition: Kaggle competition: CMI - Detect Behavior with Sensor Data, 2025"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "polars==1.31.0",
+    "kaggle==1.7.4.5"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit (>=4.1.0,<5.0.0)",
+    "ruff (>=0.12.2,<0.13.0)",
+    "bandit (>=1.8.2,<2.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
