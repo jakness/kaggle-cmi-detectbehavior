@@ -5,8 +5,12 @@ description = "Kaggle competition: Kaggle competition: CMI - Detect Behavior wit
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "polars==1.31.0",
-    "kaggle==1.7.4.5"
+    "polars==1.21.0",
+    "kaggle==1.7.4.5",
+    "scikit-learn==1.7.1",
+    "scipy==1.16.1",
+    "pandas==2.3.1",
+    "pyarrow==21.0.0",
 ]
 
 [project.optional-dependencies]
