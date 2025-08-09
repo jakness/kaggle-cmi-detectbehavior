@@ -35,3 +35,52 @@ Download the data and unzip the contents into `./data/raw` directory:
 ```bash
     python -m kaggle_cmi.explore.basic_eda
 ```
+
+## Train a model
+
+### Models available
+- `se_gru`
+  - Recommended for IMU (Inertial Measurement Unit) features only
+- `conv1d`
+  - Works for IMU features only or IMU, temperature and TOF (time of flight) features
+- `two_branch`
+  - IMU, temperature and TOF (time of flight) features required
+
+### Training parameters
+
+The following parameters can be used when training a model:
+
+- `--model`: Name of the model to train
+- `--use_only_imu`: Use only IMU features (accelerometer and rotation)
+- `--use_only_valid`: Use only validation split (no test split)
+- `--use_early_stopping`: Use early stopping during training
+- `--n_epochs`: Number of training epochs (default: 300)
+- `--sequence_length`: Length of an input sequence for the model (default: 80)
+- `--saved_model_dir_path`: Directory path to save the trained model
+- `--saved_model_name`: Name for the saved model
+
+### Examples
+#### Train a model that uses only IMU features with train/valid/test split and without early stopping
+
+```bash
+  SAVE_PATH="save_path"
+  NAME="name"
+    python -m kaggle_cmi.models.train \
+      --model se_gru \
+      --use_only_imu \
+      --saved_model_dir_path $SAVE_PATH \
+      --saved_model_name $NAME
+```
+
+### Train a model with all features (IMU + temperature + TOF) with only train/valid split and with early stopping
+
+```bash
+  SAVE_PATH="save_path"
+  NAME="name"
+    python -m kaggle_cmi.models.train \
+      --model two_branch \
+      --use_only_valid \
+      --use_early_stopping \
+      --saved_model_dir_path $SAVE_PATH \
+      --saved_model_name $NAME
+```
